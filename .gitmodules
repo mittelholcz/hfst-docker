@@ -1,0 +1,3 @@
+[submodule "hfst"]
+	path = hfst
+	url = https://github.com/hfst/hfst
