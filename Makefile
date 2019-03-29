@@ -23,6 +23,14 @@ dls:
 .PHONY: dls
 
 
+## upload container to docker hub
+drelease:
+	docker login
+	docker push $${USER}/hfst:$(HFSTTAG)
+	docker logout
+.PHONY: drelease
+
+
 ## delete unnecessary containers and images
 dclean:
 	@docker container prune -f
