@@ -13,5 +13,5 @@ Alpine based Docker image for [Helsinki Finite-State Technology](https://github.
 ## Usage
 
 ```sh
-docker pull mittelhocz/hfst:v3.15.0
+docker pull mittelhocz/hfst
 ```

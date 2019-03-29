@@ -1,4 +1,4 @@
-HFSTTAG = $$(cd hfst ; git describe --tags)
+HFSTTAG = hfst-$$(cd hfst ; git describe --tags)
 
 
 ## build docker image
