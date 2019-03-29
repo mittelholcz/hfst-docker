@@ -23,16 +23,22 @@ dls:
 .PHONY: dls
 
 
-## upload container to docker hub
-drelease:
-	docker login
-	docker push $${USER}/hfst:$(HFSTTAG)
-	docker logout
-.PHONY: drelease
-
-
 ## delete unnecessary containers and images
 dclean:
 	@docker container prune -f
 	@docker image prune -f
 .PHONY: dclean
+
+
+## push to github repo, trigger autobuild on dockerhub
+release:
+	@if [ "$$(git status --porcelain)" ] ; then \
+		echo 'ERROR: working tree are not clean! Exit.' ; \
+		exit 1; \
+	fi
+	git checkout -b $(HFSTTAG)
+	git merge master
+	git push origin $(HFSTTAG)
+	git checkout master
+	git branch -D $(HFSTTAG)
+.PHONY: release
